@@ -3,14 +3,11 @@ Description=Share local port(s) with ngrok
 After=syslog.target network.target
 
 [Service]
-PrivateTmp=true
+ExecStart={{ ngrok_path_bin }} start --all --config /home/{{ ngrok_user }}/.ngrok2/ngrok.service.yml
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
 Type=simple
-Restart=always
-RestartSec=1min
-StandardOutput=null
-StandardError=null
-ExecStart=/usr/bin/ngrok start --config /home/vagrant/.ngrok2/ngrok.service.yml --all
-ExecStop=/usr/bin/killall ngrok
 
 [Install]
 WantedBy=multi-user.target

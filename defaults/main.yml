@@ -6,10 +6,14 @@ ngrok_path_bin: "/usr/bin/ngrok"
 ngrok_path_init: "/etc/init.d"
 ngrok_path_systemd: "/lib/systemd/system"
 
+ngrok_install_as_service: false  # creates init script
+ngrok_service_name: ngrok
+ngrok_daemon: "{{ ngrok_path_bin }}"
+
 #ngrok_auth_token: "" # required, to be set in vars/playbook
-ngrok_console_ui: "false"
-ngrok_region: "eu"
-ngrok_tunnels: []
+# ngrok_console_ui: "false"
+# ngrok_region: "eu"
+# ngrok_tunnels: []
 #  - name: "custom-name-for-tunnel"
 #    hostname: "my-custom-host.ngrok.io"
 #    subdomain: "my-custom-subdomain"    # subdomain for ngrok.io (optional), only used if hostname is not defined.
@@ -21,10 +25,7 @@ ngrok_tunnels: []
 #      username: "ngrokuser"
 #      password: "secretpassword"
 
-#ngrok_usr: "user-to-create-ngrok-tunnels-for" # optional, default: ansible_ssh_user
-ngrok_start_tunnel: "--all" # tunnel to run in service (optional), by default all tunnels will be started
-ngrok_install_as_service: false  # creates init script
-ngrok_service_name: ngrok
-ngrok_daemon: "{{ ngrok_path_bin }}"
-ngrok_daemon_opts: "start {{ ngrok_start_tunnel }} --config /home/{{ ngrok_user }}/.ngrok2/ngrok.yml"
-ngrok_pidfile: "/var/run/ngrok.pid"
+# ngrok_usr: "user-to-create-ngrok-tunnels-for" # optional, default: ansible_ssh_user
+# ngrok_start_tunnel: "--all" # tunnel to run in service (optional), by default all tunnels will be started
+# ngrok_daemon_opts: "start {{ ngrok_start_tunnel }} --config /home/{{ ngrok_user }}/.ngrok2/ngrok.yml"
+# ngrok_pidfile: "/var/run/ngrok.pid"

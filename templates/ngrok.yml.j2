@@ -1,6 +1,4 @@
 authtoken: "{{ ngrok_auth_token }}"
-console_ui: {{ ngrok_console_ui }}
-region: "{{ ngrok_region }}"
 tunnels:
 {% for tunnel in ngrok_tunnels %}
   {{ tunnel.name }}:
